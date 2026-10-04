@@ -1,0 +1,726 @@
+/* ════════════════════════════════════════════════════════════
+   LOGIN PAGE CSS — Modern Startup Style 2026
+   Koperasi Poltas Kreatif Mandiri
+════════════════════════════════════════════════════════════ */
+
+:root {
+    --primary:      #2563EB;
+    --primary-dark: #1D4ED8;
+    --secondary:    #14B8A6;
+    --accent:       #F59E0B;
+    --bg-page:      #F8FAFC;
+    --text-dark:    #1E293B;
+    --text-muted:   #64748B;
+    --text-light:   #94A3B8;
+    --radius-xl:    28px;
+    --radius-lg:    20px;
+    --radius-md:    14px;
+    --radius-sm:    10px;
+}
+
+* {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body.login-body {
+    background: var(--bg-page);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PAGE FADE-IN
+═══════════════════════════════════════════════════════════ */
+
+.login-fade-in {
+    animation: loginFadeIn .7s ease both;
+}
+
+@keyframes loginFadeIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   WRAPPER — Split Screen
+═══════════════════════════════════════════════════════════ */
+
+.login-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PANEL KIRI — Branding
+═══════════════════════════════════════════════════════════ */
+
+.login-left {
+    position: relative;
+    flex: 1 1 50%;
+    background: linear-gradient(150deg, #0F2A4A 0%, #1E40AF 45%, #0D9488 110%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 3.2rem 2.6rem;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 94% 100%, 0% 100%);
+}
+
+/* Background gedung dengan opacity rendah */
+.login-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1200&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center bottom;
+    opacity: .14;
+    mix-blend-mode: luminosity;
+    z-index: 0;
+}
+
+/* Overlay gradient agar teks tetap kontras */
+.login-left::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15,42,74,.55) 0%, rgba(13,148,136,.35) 100%);
+    z-index: 0;
+}
+
+/* Pattern ornamen Islami geometris */
+.islamic-pattern {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: .12;
+    background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 38px, rgba(255,255,255,.5) 38px, rgba(255,255,255,.5) 40px),
+        repeating-linear-gradient(-45deg, transparent, transparent 38px, rgba(255,255,255,.5) 38px, rgba(255,255,255,.5) 40px);
+    background-size: 80px 80px;
+}
+
+.login-left > * { position: relative; z-index: 1; }
+
+/* Sparkle dekoratif */
+.sparkle {
+    position: absolute;
+    color: rgba(245,158,11,.55);
+    z-index: 1;
+    font-size: 1.1rem;
+    animation: sparklePulse 3.4s ease-in-out infinite;
+}
+.sparkle.s1 { top: 12%; right: 18%; animation-delay: 0s; }
+.sparkle.s2 { top: 35%; right: 8%;  animation-delay: .8s; font-size: .8rem; }
+.sparkle.s3 { top: 55%; right: 22%; animation-delay: 1.6s; font-size: .7rem; }
+
+@keyframes sparklePulse {
+    0%, 100% { opacity: .3; transform: scale(.85); }
+    50%      { opacity: 1;  transform: scale(1.1); }
+}
+
+/* ── Brand header ──────────────────────────────────────────── */
+
+.login-brand {
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+}
+
+.login-brand .brand-icon {
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.7rem;
+    flex-shrink: 0;
+}
+
+.login-brand .brand-text h6 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: .4px;
+}
+
+.login-brand .brand-text small {
+    font-size: .72rem;
+    letter-spacing: 1.2px;
+    opacity: .8;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* ── Hero text ─────────────────────────────────────────────── */
+
+.login-hero {
+    margin-top: 1.5rem;
+}
+
+.login-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -.5px;
+    margin-bottom: 1.1rem;
+}
+
+.login-hero h1 .accent-text {
+    background: linear-gradient(90deg, var(--accent), #fcd34d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.login-hero .hero-divider {
+    width: 56px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent), #fcd34d);
+    margin-bottom: 1.2rem;
+}
+
+.login-hero p {
+    font-size: .92rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,.85);
+    max-width: 420px;
+    font-weight: 400;
+}
+
+/* ── Kartu Prinsip Syariah ────────────────────────────────── */
+
+.principle-card {
+    background: rgba(255,255,255,.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 1.3rem;
+    display: flex;
+    align-items: flex-start;
+    gap: .9rem;
+    max-width: 360px;
+    margin-top: 1.8rem;
+    transition: transform .25s ease, background .25s ease;
+}
+
+.principle-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.15);
+}
+
+.principle-card .principle-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), #fbbf24);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    color: #1E293B;
+    flex-shrink: 0;
+    box-shadow: 0 6px 16px rgba(245,158,11,.35);
+}
+
+.principle-card .principle-title {
+    font-weight: 800;
+    font-size: .9rem;
+    margin-bottom: .3rem;
+}
+
+.principle-card .principle-list {
+    font-size: .78rem;
+    color: rgba(255,255,255,.85);
+    line-height: 1.6;
+}
+
+/* ── Quote ─────────────────────────────────────────────────── */
+
+.login-quote {
+    margin-top: 1.6rem;
+    display: flex;
+    gap: .7rem;
+    align-items: flex-start;
+}
+
+.login-quote .quote-mark {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: .6;
+    color: var(--accent);
+    opacity: .8;
+    font-family: Georgia, serif;
+}
+
+.login-quote p {
+    font-size: .95rem;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.5;
+    color: rgba(255,255,255,.92);
+    margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PANEL KANAN — Login Form
+═══════════════════════════════════════════════════════════ */
+
+.login-right {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    position: relative;
+    background:
+        radial-gradient(circle at 90% 10%, rgba(37,99,235,.05) 0%, transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(20,184,166,.06) 0%, transparent 45%);
+}
+
+/* ── Card login (floating glass card) ─────────────────────── */
+
+.login-card {
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,.6);
+    border-radius: var(--radius-xl);
+    box-shadow:
+        0 1px 2px rgba(15,23,42,.03),
+        0 30px 60px -15px rgba(30,64,175,.18);
+    padding: 2.6rem 2.6rem 2.2rem;
+    max-width: 460px;
+    width: 100%;
+    transition: box-shadow .3s ease, transform .3s ease;
+}
+
+.login-card:hover {
+    box-shadow:
+        0 1px 2px rgba(15,23,42,.04),
+        0 36px 70px -15px rgba(30,64,175,.22);
+}
+
+/* ── Icon lingkaran atas ───────────────────────────────────── */
+
+.login-icon-circle {
+    width: 84px; height: 84px;
+    margin: 0 auto 1.3rem;
+    border-radius: 50%;
+    background: linear-gradient(140deg, #0F2A4A, var(--secondary));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.1rem;
+    color: var(--accent);
+    box-shadow: 0 12px 28px rgba(20,184,166,.3);
+    position: relative;
+}
+
+.login-icon-circle::before {
+    content: '';
+    position: absolute;
+    inset: -7px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(37,99,235,.3);
+    animation: rotateDash 18s linear infinite;
+}
+
+@keyframes rotateDash {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ── Heading ───────────────────────────────────────────────── */
+
+.login-heading {
+    text-align: center;
+    margin-bottom: 1.8rem;
+}
+
+.login-heading h4 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: .3rem;
+    letter-spacing: -.3px;
+}
+
+.login-heading p {
+    font-size: .87rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ── Form label ────────────────────────────────────────────── */
+
+.login-card .form-label {
+    font-weight: 700;
+    font-size: .82rem;
+    color: var(--text-dark);
+    margin-bottom: .45rem;
+}
+
+/* ── Input group modern ────────────────────────────────────── */
+
+.input-modern {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1.5px solid #E2E8F0;
+    border-radius: var(--radius-md);
+    transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+    overflow: hidden;
+}
+
+.input-modern:hover {
+    border-color: #CBD5E1;
+}
+
+.input-modern:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+    transform: translateY(-1px);
+}
+
+.input-modern.is-invalid {
+    border-color: #EF4444;
+}
+
+.input-modern .input-icon {
+    width: 46px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+.input-modern:focus-within .input-icon {
+    color: var(--primary);
+}
+
+.input-modern input {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+    flex: 1;
+    padding: .78rem .25rem .78rem 0;
+    font-size: .89rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.input-modern input::placeholder {
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.toggle-password-btn {
+    width: 46px;
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color .2s ease;
+}
+
+.toggle-password-btn:hover { color: var(--primary); }
+
+.invalid-feedback-custom {
+    display: block;
+    font-size: .76rem;
+    color: #EF4444;
+    margin-top: .4rem;
+    font-weight: 600;
+}
+
+/* ── Checkbox & link ───────────────────────────────────────── */
+
+.login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.2rem 0 1.5rem;
+}
+
+.form-check-modern {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.form-check-modern input[type="checkbox"] {
+    width: 18px; height: 18px;
+    border-radius: 6px;
+    border: 1.5px solid #CBD5E1;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+.form-check-modern label {
+    font-size: .82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+}
+
+.link-forgot {
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.link-forgot:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* ── Tombol login gradient ─────────────────────────────────── */
+
+.btn-login-modern {
+    width: 100%;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: .9rem;
+    font-size: .95rem;
+    font-weight: 800;
+    letter-spacing: .2px;
+    color: #fff;
+    background: linear-gradient(95deg, var(--primary) 0%, var(--primary-dark) 50%, var(--secondary) 130%);
+    background-size: 180% 180%;
+    background-position: 0% 50%;
+    box-shadow: 0 10px 24px rgba(37,99,235,.32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    cursor: pointer;
+    transition: background-position .5s ease, transform .18s ease, box-shadow .25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-login-modern:hover:not(:disabled) {
+    background-position: 100% 50%;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(37,99,235,.4);
+    color: #fff;
+}
+
+.btn-login-modern:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-login-modern:disabled {
+    opacity: .85;
+    cursor: not-allowed;
+}
+
+.spinner-login {
+    width: 18px; height: 18px;
+    border: 2.5px solid rgba(255,255,255,.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spinLogin .7s linear infinite;
+}
+
+@keyframes spinLogin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Divider "atau masuk dengan" ───────────────────────────── */
+
+.login-divider {
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    margin: 1.4rem 0 1.2rem;
+}
+
+.login-divider .line {
+    flex: 1;
+    height: 1px;
+    background: #E2E8F0;
+}
+
+.login-divider span {
+    font-size: .76rem;
+    color: var(--text-light);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ── Info box keamanan ─────────────────────────────────────── */
+
+.security-box {
+    background: linear-gradient(120deg, rgba(37,99,235,.06), rgba(20,184,166,.07));
+    border: 1px solid rgba(37,99,235,.14);
+    border-radius: var(--radius-md);
+    padding: .85rem 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    transition: background .2s ease;
+}
+
+.security-box:hover {
+    background: linear-gradient(120deg, rgba(37,99,235,.1), rgba(20,184,166,.11));
+}
+
+.security-box .security-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: rgba(37,99,235,.12);
+    color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+.security-box .security-title {
+    font-size: .82rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.security-box .security-sub {
+    font-size: .73rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* ── Footer copyright ──────────────────────────────────────── */
+
+.login-footer {
+    text-align: center;
+    margin-top: 1.6rem;
+    font-size: .76rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* ── Alert flash message ───────────────────────────────────── */
+
+.login-card .alert {
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: .82rem;
+    font-weight: 600;
+    padding: .7rem 1rem;
+}
+
+.login-card .alert-success {
+    background: #ECFDF5;
+    color: #047857;
+}
+
+.login-card .alert-danger {
+    background: #FEF2F2;
+    color: #B91C1C;
+}
+
+.login-card .alert ul {
+    padding-left: 1.1rem;
+    margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 1199.98px) {
+    .login-hero h1 { font-size: 2.1rem; }
+    .login-left { padding: 2.5rem 2.2rem 2rem; }
+}
+
+@media (max-width: 991.98px) {
+    .login-wrapper { flex-direction: column; }
+
+    .login-left {
+        display: none;
+    }
+
+    .login-right {
+        flex: 1 1 100%;
+        min-height: 100vh;
+        padding: 2.5rem 1.2rem;
+    }
+
+    .login-card {
+        max-width: 440px;
+        padding: 2.2rem 1.8rem 1.9rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .login-card {
+        padding: 1.9rem 1.4rem 1.7rem;
+        border-radius: var(--radius-lg);
+    }
+
+    .login-icon-circle {
+        width: 70px; height: 70px;
+        font-size: 1.7rem;
+    }
+
+    .login-heading h4 { font-size: 1.3rem; }
+}
+
+/* Mobile compact brand (muncul hanya saat panel kiri disembunyikan) */
+.mobile-brand {
+    display: none;
+    text-align: center;
+    margin-bottom: 1.6rem;
+}
+
+@media (max-width: 991.98px) {
+    .mobile-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .5rem;
+    }
+
+    .mobile-brand .brand-icon-mobile {
+        width: 54px; height: 54px;
+        border-radius: 14px;
+        background: linear-gradient(140deg, var(--primary), var(--secondary));
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.5rem;
+        color: #fff;
+        box-shadow: 0 10px 22px rgba(37,99,235,.3);
+    }
+
+    .mobile-brand h6 {
+        font-size: .95rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        margin: 0;
+    }
+
+    .mobile-brand small {
+        font-size: .7rem;
+        color: var(--text-muted);
+        font-weight: 600;
+        letter-spacing: .5px;
+        text-transform: uppercase;
+    }
+}
